@@ -1,0 +1,14 @@
+C:\Users\APM02-48\Documents\Estudiantes\bin\Debug\net7.0\Estudiantes.exe
+C:\Users\APM02-48\Documents\Estudiantes\bin\Debug\net7.0\Estudiantes.deps.json
+C:\Users\APM02-48\Documents\Estudiantes\bin\Debug\net7.0\Estudiantes.runtimeconfig.json
+C:\Users\APM02-48\Documents\Estudiantes\bin\Debug\net7.0\Estudiantes.dll
+C:\Users\APM02-48\Documents\Estudiantes\bin\Debug\net7.0\Estudiantes.pdb
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\Estudiantes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\Estudiantes.AssemblyInfoInputs.cache
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\Estudiantes.AssemblyInfo.cs
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\Estudiantes.csproj.CoreCompileInputs.cache
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\Estudiantes.dll
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\refint\Estudiantes.dll
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\Estudiantes.pdb
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\Estudiantes.genruntimeconfig.cache
+C:\Users\APM02-48\Documents\Estudiantes\obj\Debug\net7.0\ref\Estudiantes.dll
