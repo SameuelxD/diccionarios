@@ -84,11 +84,13 @@ internal class Program
     static void AgregarEstudiante()
     {
         Console.Clear();
+        Console.WriteLine("----------------------------------------------");
         Console.WriteLine("------------ Agregar Estudiantes -------------");
         Console.WriteLine("----------------------------------------------");
         Notas notas = new Notas();
 
         Console.WriteLine("Ingrese Código Numérico (máximo 15 caracteres):");
+        Console.WriteLine(" *** El codigo no se puede repetir *** ");
         notas.Codigo = Console.ReadLine();
         notas.Codigo = notas.Codigo.Replace(" ", "");
 
@@ -96,6 +98,7 @@ internal class Program
         {
             Console.Clear();
             Console.WriteLine("¡Error! Código Inválido. Ingrese Código Numérico (máximo 15 caracteres):");
+            Console.WriteLine(" *** El codigo no se puede repetir *** ");
             notas.Codigo = Console.ReadLine();
             notas.Codigo = notas.Codigo.Replace(" ", "");
         }
@@ -112,12 +115,14 @@ internal class Program
         }
         Console.Clear();
         Console.WriteLine("Ingrese Email (máximo 40 caracteres):");
+        Console.WriteLine("Ejemplo: xxx@xxx");
         notas.Email = Console.ReadLine();
         notas.Email = notas.Email.Replace(" ", "");
         while (string.IsNullOrWhiteSpace(notas.Email) || notas.Email.Length > 40 || !IsValidEmail(notas.Email))
         {
             Console.Clear();
             Console.WriteLine("¡Error! Email Inválido. Ingrese Email (máximo 40 caracteres):");
+            Console.WriteLine("Ejemplo: xxx@xxx");
             notas.Email = Console.ReadLine();
             notas.Email = notas.Email.Replace(" ", "");
         }
@@ -127,6 +132,7 @@ internal class Program
             try
             {
                 Console.WriteLine("Ingrese Edad:");
+                Console.WriteLine(" *** Digite una edad entre los 1-100 años");
                 notas.Edad = int.Parse(Console.ReadLine());
 
                 if (notas.Edad > 100 || notas.Edad <= 0)
@@ -174,8 +180,9 @@ internal class Program
     static void AgregarNotasQuizzes()
     {
         Console.Clear();
+        Console.WriteLine("------------------------------------------------");
         Console.WriteLine("------------ Agregar Notas Quizzes -------------");
-        Console.WriteLine("----------------------------------------------");
+        Console.WriteLine("------------------------------------------------");
 
         string codigoEstudiante = VerificarEstudiante();
 
@@ -190,6 +197,7 @@ internal class Program
             {
                 try
                 {
+                    Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
                     Console.WriteLine("Ingrese Nota Quizz 1:");
                     notas.Quizz_1 = int.Parse(Console.ReadLine());
 
@@ -235,9 +243,9 @@ internal class Program
         static void AgregarNotasTrabajos()
         {
             Console.Clear();
-
+            Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("------------ Agregar Notas Trabajos -------------");
-            Console.WriteLine("----------------------------------------------");
+            Console.WriteLine("-------------------------------------------------");
 
             string codigoEstudiante = VerificarEstudiante();
 
@@ -252,6 +260,7 @@ internal class Program
                 {
                     try
                     {
+                        Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
                         Console.WriteLine("Ingrese Nota Trabajo 1:");
                         notas.Trabajo_1 = int.Parse(Console.ReadLine());
 
@@ -293,8 +302,9 @@ internal class Program
         static void AgregarNotasParciales()
         {
             Console.Clear();
+            Console.WriteLine("--------------------------------------------------");
             Console.WriteLine("------------ Agregar Notas Parciales -------------");
-            Console.WriteLine("----------------------------------------------");
+            Console.WriteLine("--------------------------------------------------");
 
             string codigoEstudiante = VerificarEstudiante();
 
@@ -310,6 +320,7 @@ internal class Program
                 {
                     try
                     {
+                        Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
                         Console.WriteLine("Ingrese Nota Parcial 1:");
                         notas.Parcial_1 = int.Parse(Console.ReadLine());
 
@@ -348,7 +359,7 @@ internal class Program
             }
         }
 
-        // ... Resto del código (métodos MostrarEstudiantes, MostrarNotas, IsValidEmail, VerificarEstudiante y definición de la clase Notas) ...
+        
 
         static string VerificarEstudiante()
         {
@@ -372,8 +383,6 @@ internal class Program
 
             return null;
         }
-
-        // ... Resto del código (métodos MostrarEstudiantes, MostrarNotas, IsValidEmail y definición de la clase Notas) ...
 
         static void MostrarEstudiantes()
         {
@@ -407,7 +416,7 @@ internal class Program
 
             Console.WriteLine("Presione una tecla para continuar...");
             Console.ReadLine();
-            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
         }
         static void MostrarDefinitivas(){
             Console.Clear();
@@ -427,8 +436,6 @@ internal class Program
             Console.ReadLine();
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
         }
-
-        // ... Resto del código (métodos MostrarEstudiantes, IsValidEmail y definición de la clase Notas) ...
 
         static bool IsValidEmail(string email)
         {
