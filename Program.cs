@@ -18,7 +18,8 @@ internal class Program
             Console.WriteLine("   4. Agregar Notas Parciales.");
             Console.WriteLine("   5. Mostrar Estudiantes.");
             Console.WriteLine("   6. Mostrar Notas.");
-            Console.WriteLine("   7. Cerrar Programa.");
+            Console.WriteLine("   7. Mostrar Definitivas.");
+            Console.WriteLine("   8. Cerrar Programa.");
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("Digite una opcion: ");
             
@@ -57,6 +58,11 @@ internal class Program
                         MostrarNotas();
                         break;
                     case 7:
+                        Console.Clear();
+                        Console.WriteLine("7. Mostrar Definitivas");
+                        MostrarDefinitivas();
+                        break;
+                    case 8:
                         Console.WriteLine("Cerrando Programa. Presione una tecla para continuar.");
                         Console.ReadLine();
                         active = false;
@@ -380,19 +386,19 @@ internal class Program
             }
             Console.WriteLine("Presione una tecla para continuar...");
             Console.ReadLine();
-            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
         }
         static void MostrarNotas()
         {
             Console.Clear();
             Console.WriteLine("------------------------------------------------------------------- Mostrar Notas ----------------------------------------------------------------------------");
-            Console.WriteLine("{0,-10} {1,-10} {2,-20} {3,-20} {4,-20}",
+            Console.WriteLine("{0,-15} {1,-15} {2,-45} {3,-45} {4,-45}",
                 "Código", "Nombre", "Quizzes (Q1 Q2 Q3 Q4)", "Talleres (T1 T2 T3)", "Parciales (P1 P2 P3)");
 
             foreach (var kvp in dictNotas)
             {
                 Notas notasEstudiante = kvp.Value;
-                Console.WriteLine("{0,-10} {1,-10} {2,-20} {3,-20} {4,-20}",
+                Console.WriteLine("{0,-15} {1,-15} {2,-45} {3,-45} {4,-45}",
                     notasEstudiante.Codigo, notasEstudiante.Nombre,
                     $"{notasEstudiante.Quizz_1} {notasEstudiante.Quizz_2} {notasEstudiante.Quizz_3} {notasEstudiante.Quizz_4}",
                     $"{notasEstudiante.Trabajo_1} {notasEstudiante.Trabajo_2} {notasEstudiante.Trabajo_3}",
@@ -403,7 +409,24 @@ internal class Program
             Console.ReadLine();
             Console.WriteLine("-----------------------------------------------");
         }
-
+        static void MostrarDefinitivas(){
+            Console.Clear();
+            Console.WriteLine("---------------------------------------------------------------- Mostrar Definitivas ------------------------------------------------------------------------");
+            Console.WriteLine("{0,-15} {1,-15} {2,-35} {3,-35} {4,-35} {5,-35}",
+                "Código", "Nombre", "Definitiva Quizzes", "Definitiva Talleres", "Definitiva Parciales", "Definitiva Final");
+            foreach (var kvp in dictNotas)
+            {
+                Notas notasEstudiante = kvp.Value;
+                double defQuizzes = ((notasEstudiante.Quizz_1+notasEstudiante.Quizz_2+notasEstudiante.Quizz_3+notasEstudiante.Quizz_4)/4)*0.25;
+                double defTrabajos = ((notasEstudiante.Trabajo_1+notasEstudiante.Trabajo_2+notasEstudiante.Trabajo_3)/3)*0.15;
+                double defParciales = ((notasEstudiante.Parcial_1+notasEstudiante.Parcial_2+notasEstudiante.Parcial_3)/3)*0.60;
+                double defFinal = (defQuizzes+defTrabajos+defParciales);
+                Console.WriteLine("{0,-15} {1,-15} {2,-35} {3,-35} {4,-35} {5,-35}",notasEstudiante.Codigo, notasEstudiante.Nombre, defQuizzes, defTrabajos, defParciales, defFinal );
+            }
+            Console.WriteLine("Presione una tecla para continuar...");
+            Console.ReadLine();
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
+        }
 
         // ... Resto del código (métodos MostrarEstudiantes, IsValidEmail y definición de la clase Notas) ...
 
