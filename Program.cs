@@ -386,21 +386,24 @@ internal class Program
         {
             Console.Clear();
             Console.WriteLine("------------------------------------------------------------------- Mostrar Notas ----------------------------------------------------------------------------");
-            Console.WriteLine("{0,-15} {1,-15} {2,-10} {3,-10} {4,-10} {5,-10} {6,-10} {7,-10} {8,-10} {9,-10} {10,-10} {11,-10}",
-                "Código","Nombre", "Q1", "Q2", "Q3", "Q4", "T1", "T2", "T3", "P1", "P2", "P3");
+            Console.WriteLine("{0,-10} {1,-10} {2,-20} {3,-20} {4,-20}",
+                "Código", "Nombre", "Quizzes (Q1 Q2 Q3 Q4)", "Talleres (T1 T2 T3)", "Parciales (P1 P2 P3)");
 
             foreach (var kvp in dictNotas)
             {
                 Notas notasEstudiante = kvp.Value;
-                Console.WriteLine("{0,-15} {1,-15} {2,-10} {3,-10} {4,-10} {5,-10} {6,-10} {7,-10} {8,-10} {9,-10} {10,-10} {11,-10}",
-                    notasEstudiante.Codigo,notasEstudiante.Nombre, notasEstudiante.Quizz_1, notasEstudiante.Quizz_2, notasEstudiante.Quizz_3, notasEstudiante.Quizz_4,
-                    notasEstudiante.Trabajo_1, notasEstudiante.Trabajo_2, notasEstudiante.Trabajo_3, notasEstudiante.Parcial_1, notasEstudiante.Parcial_2, notasEstudiante.Parcial_3);
+                Console.WriteLine("{0,-10} {1,-10} {2,-20} {3,-20} {4,-20}",
+                    notasEstudiante.Codigo, notasEstudiante.Nombre,
+                    $"{notasEstudiante.Quizz_1} {notasEstudiante.Quizz_2} {notasEstudiante.Quizz_3} {notasEstudiante.Quizz_4}",
+                    $"{notasEstudiante.Trabajo_1} {notasEstudiante.Trabajo_2} {notasEstudiante.Trabajo_3}",
+                    $"{notasEstudiante.Parcial_1} {notasEstudiante.Parcial_2} {notasEstudiante.Parcial_3}");
             }
 
             Console.WriteLine("Presione una tecla para continuar...");
             Console.ReadLine();
             Console.WriteLine("-----------------------------------------------");
         }
+
 
         // ... Resto del código (métodos MostrarEstudiantes, IsValidEmail y definición de la clase Notas) ...
 
