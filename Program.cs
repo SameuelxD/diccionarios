@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 internal class Program
 {
@@ -8,6 +9,7 @@ internal class Program
     private static void Main(string[] args)
     {
         bool active = true;
+        dictNotas = CargarDatos();
         while (active)
         {
             Console.Clear();
@@ -31,6 +33,7 @@ internal class Program
                         Console.Clear();
                         Console.WriteLine("1. Agregar Estudiante.");
                         AgregarEstudiante();
+                        GuardarInformacion(dictNotas);
                         break;
                     case 2:
                         Console.Clear();
@@ -315,7 +318,6 @@ internal class Program
 
                 // Accede al estudiante en el diccionario y agrega las notas de parciales.
                 Notas notas = dictNotas[codigoEstudiante];
-
                 while (true)
                 {
                     try
@@ -449,7 +451,36 @@ internal class Program
                 return false;
             }
         }
+        public static void GuardarInformacion(Dictionary<string, Notas> dictNotas){
+            string json = JsonConvert.SerializeObject(dictNotas, Formatting.Indented);
+            File.WriteAllText("estudiantes.json", json);
+        }
+        public static Dictionary<string, Notas> CargarDatos()
+        {
+            using (StreamReader reader = new StreamReader("estudiantes.json"))
+            {
+                string json = reader.ReadToEnd();
+                return System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Notas>>(json, new System.Text.Json.JsonSerializerOptions(){PropertyNameCaseInsensitive=true}) ?? new Dictionary<string, Notas>();
+            }
+        }
+        public void EliminarEstudiante(Dictionary<string, Notas> dictNotas){
+            string codigoEstudiante = VerificarEstudiante();
+            if (codigoEstudiante != null)
+            {
+                Console.Clear();
+                Console.WriteLine($"Estudiante con código {codigoEstudiante} eliminado correctamente.");
 
+                // Accede al estudiante en el diccionario y elimina al estudiante
+                dictNotas.Remove(codigoEstudiante);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("No se encontró ningún estudiante con el código proporcionado.");
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadLine();
+            }
+        }
         internal class Notas
         {
             public string Nombre { get; set; }

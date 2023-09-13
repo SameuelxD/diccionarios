@@ -1,0 +1,19 @@
+{
+  "50": {
+    "Nombre": "a",
+    "Email": "a@a",
+    "Edad": 90,
+    "Direccion": "a",
+    "Codigo": "50",
+    "Quizz_1": 0,
+    "Quizz_2": 0,
+    "Quizz_3": 0,
+    "Quizz_4": 0,
+    "Trabajo_1": 0,
+    "Trabajo_2": 0,
+    "Trabajo_3": 0,
+    "Parcial_1": 0,
+    "Parcial_2": 0,
+    "Parcial_3": 0
+  }
+}
