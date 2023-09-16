@@ -39,16 +39,19 @@ internal class Program
                         Console.Clear();
                         Console.WriteLine("2. Agregar Notas Quizzes.");
                         AgregarNotasQuizzes();
+                        GuardarInformacion(dictNotas);
                         break;
                     case 3:
                         Console.Clear();
                         Console.WriteLine("3. Agregar Notas Trabajos.");
                         AgregarNotasTrabajos();
+                        GuardarInformacion(dictNotas);
                         break;
                     case 4:
                         Console.Clear();
                         Console.WriteLine("4. Agregar Notas Parciales.");
                         AgregarNotasParciales();
+                        GuardarInformacion(dictNotas);
                         break;
                     case 5:
                         Console.Clear();
@@ -193,42 +196,37 @@ internal class Program
         {
             Console.Clear();
             Console.WriteLine($"Estudiante con código {codigoEstudiante} verificado correctamente.");
-
-            // Accede al estudiante en el diccionario y agrega las notas de quizzes.
             Notas notas = dictNotas[codigoEstudiante];
-            while (true)
+
+            for (int i = 0; i < 4; i++)
             {
-                try
+                while (true)
                 {
-                    Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
-                    Console.WriteLine("Ingrese Nota Quizz 1:");
-                    notas.Quizz_1 = int.Parse(Console.ReadLine());
+                    try
+                    {
+                        Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
+                        Console.WriteLine($"Ingrese Nota Quizz {i + 1}:");
+                        int nota = int.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Ingrese Nota Quizz 2:");
-                    notas.Quizz_2 = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Ingrese Nota Quizz 3:");
-                    notas.Quizz_3 = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Ingrese Nota Quizz 4:");
-                    notas.Quizz_4 = int.Parse(Console.ReadLine());
-
-                    if((notas.Quizz_1 > 100 || notas.Quizz_1 < 0) || (notas.Quizz_2 > 100 || notas.Quizz_2 < 0) || (notas.Quizz_3 > 100 || notas.Quizz_3 < 0) || (notas.Quizz_4 > 100 || notas.Quizz_4 < 0))
+                        if (nota >= 0 && nota <= 100)
+                        {
+                            notas.Quizzes.Add(nota);
+                            break; 
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("¡Error! Notas Quizzes Inválidas. ");
+                        }
+                    }
+                    catch (FormatException)
                     {
                         Console.Clear();
-                        Console.WriteLine("¡Error! Notas Quizzes Inválidas. ");
+                        Console.WriteLine("¡Error! Ingrese una nota válida.");
                     }
-                    else
-                    {
-                        break;
-                    }
-                }
-                catch (FormatException)
-                {
-                    Console.Clear();
-                    Console.WriteLine("¡Error! Notas Quizzes Inválidas. ");
                 }
             }
+
             Console.WriteLine("Notas de Quizzes agregadas correctamente.");
             Console.WriteLine("Presione una tecla para continuar...");
             Console.ReadLine();
@@ -259,36 +257,36 @@ internal class Program
 
                 // Accede al estudiante en el diccionario y agrega las notas de trabajos.
                 Notas notas = dictNotas[codigoEstudiante];
-                while (true)
+
+                for (int i = 0; i < 3; i++)
                 {
-                    try
+                    while (true)
                     {
-                        Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
-                        Console.WriteLine("Ingrese Nota Trabajo 1:");
-                        notas.Trabajo_1 = int.Parse(Console.ReadLine());
+                        try
+                        {
+                            Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
+                            Console.WriteLine($"Ingrese Nota Trabajo {i + 1}:");
+                            int nota = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Ingrese Nota Trabajo 2:");
-                        notas.Trabajo_2 = int.Parse(Console.ReadLine());
-
-                        Console.WriteLine("Ingrese Nota Trabajo 3:");
-                        notas.Trabajo_3 = int.Parse(Console.ReadLine());
-
-                        if((notas.Trabajo_1 > 100 || notas.Trabajo_1 < 0) || (notas.Trabajo_2 > 100 || notas.Trabajo_2 < 0) || (notas.Trabajo_3 > 100 || notas.Trabajo_3 < 0))
+                            if (nota >= 0 && nota <= 100)
+                            {
+                                notas.Trabajos.Add(nota);
+                                break; // Sal del bucle while si la nota es válida.
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("¡Error! Notas Trabajos Inválidas. ");
+                            }
+                        }
+                        catch (FormatException)
                         {
                             Console.Clear();
-                            Console.WriteLine("¡Error! Notas Trabajos Inválidas. ");
+                            Console.WriteLine("¡Error! Ingrese una nota válida.");
                         }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("¡Error! Notas Trabajos Inválidas. ");
                     }
                 }
+
                 Console.WriteLine("Notas de Trabajos agregadas correctamente.");
                 Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadLine();
@@ -301,6 +299,7 @@ internal class Program
                 Console.ReadLine();
             }
         }
+
 
         static void AgregarNotasParciales()
         {
@@ -316,38 +315,38 @@ internal class Program
                 Console.Clear();
                 Console.WriteLine($"Estudiante con código {codigoEstudiante} verificado correctamente.");
 
-                // Accede al estudiante en el diccionario y agrega las notas de parciales.
+                // Accede al estudiante en el diccionario y agrega las notas de trabajos.
                 Notas notas = dictNotas[codigoEstudiante];
-                while (true)
+
+                for (int i = 0; i < 2; i++)
                 {
-                    try
+                    while (true)
                     {
-                        Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
-                        Console.WriteLine("Ingrese Nota Parcial 1:");
-                        notas.Parcial_1 = int.Parse(Console.ReadLine());
+                        try
+                        {
+                            Console.WriteLine(" *** Notas Tipo Entero entre 0-100 ");
+                            Console.WriteLine($"Ingrese Nota Parcial {i + 1}:");
+                            int nota = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Ingrese Nota Parcial 2:");
-                        notas.Parcial_2 = int.Parse(Console.ReadLine());
-
-                        Console.WriteLine("Ingrese Nota Parcial 3:");
-                        notas.Parcial_3 = int.Parse(Console.ReadLine());
-
-                        if((notas.Parcial_1 > 100 || notas.Parcial_1 < 0) || (notas.Parcial_2 > 100 || notas.Parcial_2 < 0) || (notas.Parcial_3 > 100 || notas.Parcial_3 < 0))
+                            if (nota >= 0 && nota <= 100)
+                            {
+                                notas.Parciales.Add(nota);
+                                break; // Sal del bucle while si la nota es válida.
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("¡Error! Notas Parciales Inválidas. ");
+                            }
+                        }
+                        catch (FormatException)
                         {
                             Console.Clear();
-                            Console.WriteLine("¡Error! Notas Parciales Inválidas. ");
+                            Console.WriteLine("¡Error! Ingrese una nota válida.");
                         }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("¡Error! Notas Parciales Inválidas. ");
                     }
                 }
+
                 Console.WriteLine("Notas de Parciales agregadas correctamente.");
                 Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadLine();
@@ -388,12 +387,12 @@ internal class Program
 
         static void MostrarEstudiantes()
         {
-            Console.WriteLine("---------------------------------------------------------------- Mostrar Estudiantes -------------------------------------------------------------------------");
-            Console.WriteLine("{0,-35} {1,-35} {2,-35} {3,-35} {4, -35}", "Código", "Nombre", "Email", "Edad", "Dirección");
+            Console.WriteLine("------------------------------------------------- Mostrar Estudiantes ---------------------------------------------------------");
+            Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25} {4, -25}", "Código", "Nombre", "Email", "Edad", "Dirección");
             foreach (var kvp in dictNotas)
             {
                 Notas estudiante = kvp.Value;
-                Console.WriteLine("{0,-35} {1,-35} {2,-35} {3,-35} {4, -35}", estudiante.Codigo, estudiante.Nombre, estudiante.Email, estudiante.Edad, estudiante.Direccion);
+                Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25} {4, -25}", estudiante.Codigo, estudiante.Nombre, estudiante.Email, estudiante.Edad, estudiante.Direccion);
             }
             Console.WriteLine("Presione una tecla para continuar...");
             Console.ReadLine();
@@ -402,42 +401,67 @@ internal class Program
         static void MostrarNotas()
         {
             Console.Clear();
-            Console.WriteLine("------------------------------------------------------------------- Mostrar Notas ----------------------------------------------------------------------------");
-            Console.WriteLine("{0,-15} {1,-15} {2,-45} {3,-45} {4,-45}",
-                "Código", "Nombre", "Quizzes (Q1 Q2 Q3 Q4)", "Talleres (T1 T2 T3)", "Parciales (P1 P2 P3)");
+            Console.WriteLine("----------------------------------------------------------- Mostrar Notas --------------------------------------------------------------------");
+            Console.WriteLine("{0,-15} {1,-15} {2,-25} {3,-25} {4,-25}",
+                "Código", "Nombre", "Quizzes (Q1 Q2 Q3 Q4)", "Talleres (T1 T2 T3)", "Parciales (P1 P2)");
 
             foreach (var kvp in dictNotas)
             {
                 Notas notasEstudiante = kvp.Value;
-                Console.WriteLine("{0,-15} {1,-15} {2,-45} {3,-45} {4,-45}",
-                    notasEstudiante.Codigo, notasEstudiante.Nombre,
-                    $"{notasEstudiante.Quizz_1} {notasEstudiante.Quizz_2} {notasEstudiante.Quizz_3} {notasEstudiante.Quizz_4}",
-                    $"{notasEstudiante.Trabajo_1} {notasEstudiante.Trabajo_2} {notasEstudiante.Trabajo_3}",
-                    $"{notasEstudiante.Parcial_1} {notasEstudiante.Parcial_2} {notasEstudiante.Parcial_3}");
-            }
 
+                // Verificar si hay notas para este estudiante
+                if (notasEstudiante.Quizzes.Count == 4 && notasEstudiante.Trabajos.Count == 3 && notasEstudiante.Parciales.Count == 2)
+                {
+                    Console.WriteLine("{0,-15} {1,-15} {2,-25} {3,-25} {4,-25}",
+                        notasEstudiante.Codigo, notasEstudiante.Nombre,
+                        $"{notasEstudiante.Quizzes[0]} {notasEstudiante.Quizzes[1]} {notasEstudiante.Quizzes[2]} {notasEstudiante.Quizzes[3]}",
+                        $"{notasEstudiante.Trabajos[0]} {notasEstudiante.Trabajos[1]} {notasEstudiante.Trabajos[2]}",
+                        $"{notasEstudiante.Parciales[0]} {notasEstudiante.Parciales[1]}");
+                }
+                else
+                {
+                    // Mostrar un mensaje de error si faltan notas
+                    Console.WriteLine("{0,-15} {1,-15} {2,-25} {3,-25} {4,-25}",
+                        notasEstudiante.Codigo, notasEstudiante.Nombre,
+                        "Notas faltantes", "Notas faltantes", "Notas faltantes");
+                }
+            }
             Console.WriteLine("Presione una tecla para continuar...");
             Console.ReadLine();
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
         }
-        static void MostrarDefinitivas(){
+
+        static void MostrarDefinitivas()
+        {
             Console.Clear();
-            Console.WriteLine("---------------------------------------------------------------- Mostrar Definitivas ------------------------------------------------------------------------");
-            Console.WriteLine("{0,-15} {1,-15} {2,-35} {3,-35} {4,-35} {5,-35}",
+            Console.WriteLine("----------------------------------------------------------- Mostrar Definitivas -------------------------------------------------------------------");
+            Console.WriteLine("{0,-15} {1,-15} {2,-25} {3,-25} {4,-25} {5,-25}",
                 "Código", "Nombre", "Definitiva Quizzes", "Definitiva Talleres", "Definitiva Parciales", "Definitiva Final");
+
             foreach (var kvp in dictNotas)
             {
                 Notas notasEstudiante = kvp.Value;
-                double defQuizzes = ((notasEstudiante.Quizz_1+notasEstudiante.Quizz_2+notasEstudiante.Quizz_3+notasEstudiante.Quizz_4)/4)*0.25;
-                double defTrabajos = ((notasEstudiante.Trabajo_1+notasEstudiante.Trabajo_2+notasEstudiante.Trabajo_3)/3)*0.15;
-                double defParciales = ((notasEstudiante.Parcial_1+notasEstudiante.Parcial_2+notasEstudiante.Parcial_3)/3)*0.60;
-                double defFinal = (defQuizzes+defTrabajos+defParciales);
-                Console.WriteLine("{0,-15} {1,-15} {2,-35} {3,-35} {4,-35} {5,-35}",notasEstudiante.Codigo, notasEstudiante.Nombre, defQuizzes, defTrabajos, defParciales, defFinal );
+
+                // Verificar si hay notas suficientes para calcular las definitivas
+                if (notasEstudiante.Quizzes.Count == 4 && notasEstudiante.Trabajos.Count == 3 && notasEstudiante.Parciales.Count == 2)
+                {
+                    double defQuizzes = ((notasEstudiante.Quizzes[0] + notasEstudiante.Quizzes[1] + notasEstudiante.Quizzes[2] + notasEstudiante.Quizzes[3]) / 4) * 0.25;
+                    double defTrabajos = ((notasEstudiante.Trabajos[0] + notasEstudiante.Trabajos[1] + notasEstudiante.Trabajos[2]) / 3) * 0.15;
+                    double defParciales = ((notasEstudiante.Parciales[0] + notasEstudiante.Parciales[1]) / 2) * 0.60;
+                    double defFinal = (defQuizzes + defTrabajos + defParciales);
+                    Console.WriteLine("{0,-15} {1,-15} {2,-25} {3,-25} {4,-25} {5,-25}", notasEstudiante.Codigo, notasEstudiante.Nombre, defQuizzes, defTrabajos, defParciales, defFinal);
+                }
+                else
+                {
+                    // Mostrar un mensaje de error si faltan notas
+                    Console.WriteLine("{0,-15} {1,-15} {2,-25} {3,-25} {4,-25} {5,-25}", notasEstudiante.Codigo, notasEstudiante.Nombre, "Notas faltantes", "Notas faltantes", "Notas faltantes", "Notas faltantes");
+                }
             }
             Console.WriteLine("Presione una tecla para continuar...");
             Console.ReadLine();
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
         }
+
 
         static bool IsValidEmail(string email)
         {
@@ -457,10 +481,18 @@ internal class Program
         }
         public static Dictionary<string, Notas> CargarDatos()
         {
-            using (StreamReader reader = new StreamReader("estudiantes.json"))
+             try
             {
-                string json = reader.ReadToEnd();
-                return System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Notas>>(json, new System.Text.Json.JsonSerializerOptions(){PropertyNameCaseInsensitive=true}) ?? new Dictionary<string, Notas>();
+                using (StreamReader reader = new StreamReader("estudiantes.json"))
+                {
+                    string json = reader.ReadToEnd();
+                    return System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Notas>>(json, new System.Text.Json.JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) ?? new Dictionary<string, Notas>();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cargar datos desde estudiantes.json: " + ex.Message);
+                return new Dictionary<string, Notas>();
             }
         }
         public void EliminarEstudiante(Dictionary<string, Notas> dictNotas){
@@ -488,16 +520,10 @@ internal class Program
             public int Edad { get; set; }
             public string Direccion { get; set; }
             public string Codigo { get; set; }
-            public int Quizz_1 { get; set; }
-            public int Quizz_2 { get; set; }
-            public int Quizz_3 { get; set; }
-            public int Quizz_4 { get; set; }
-            public int Trabajo_1 { get; set; }
-            public int Trabajo_2 { get; set; }
-            public int Trabajo_3 { get; set; }
-            public int Parcial_1 { get; set; }
-            public int Parcial_2 { get; set; }
-            public int Parcial_3 { get; set; }
+            public List<int> Quizzes { get; set; } = new List<int>(); 
+            public List<int> Trabajos { get; set; } = new List<int>(); 
+            public List<int> Parciales { get; set; } = new List<int>();
+            
             
         }
     }

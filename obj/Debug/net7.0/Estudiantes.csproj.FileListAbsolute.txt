@@ -41,3 +41,5 @@ C:/Users/APM02-48/Downloads/Estudiantes/Estudiantes-main/bin/Debug/net7.0/Estudi
 C:/Users/APM02-48/Downloads/Estudiantes/Estudiantes-main/bin/Debug/net7.0/Estudiantes.pdb
 C:/Users/APM02-48/Downloads/Estudiantes/Estudiantes-main/obj/Debug/net7.0/Estudiantes.genruntimeconfig.cache
 C:/Users/APM02-48/Downloads/Estudiantes/Estudiantes-main/obj/Debug/net7.0/ref/Estudiantes.dll
+/workspaces/Estudiantes/bin/Debug/net7.0/Newtonsoft.Json.dll
+/workspaces/Estudiantes/obj/Debug/net7.0/Estudiantes.csproj.CopyComplete
